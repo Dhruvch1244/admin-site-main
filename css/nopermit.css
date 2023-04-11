@@ -130,60 +130,33 @@ body {
     font-size: 32px;
 }
 
-.container {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.container4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-.form {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -30%);
-    width: 700px;
-    height: 500px;
-    background-color: #4A9ECD;
-    border-radius: 50px 50px 50px 50px;
-    padding: 50px;
-    box-sizing: border-box;
+.aa {
+    padding-left: 30%;
+    padding-top: 10%;
 }
 
-h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    text-align: center;
+table {
+    border-collapse: collapse;
+    width: 600px;
+    background-color: #7DA9FF;
 }
 
-input[type="text"],
-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    border: none;
-    border-radius: 5px;
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
 }
 
-input[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 150px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #3e8e41;
-}
-
-.result {
-    margin-top: 20px;
-    font-size: 20px;
-    text-align: center;
+.aaa {
+    background-color: #FF0303;
+    border-color: #262656;
 }

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/nopermit.css">
+    <link href="https://fonts.cdnfonts.com/css/carrois-gothic-sc" rel="stylesheet">
+
+</head>
+
+<body>
+    <img src="resources/logo.png" alt="Logo" class="logo">
+    <div class="rectangle1">
+        Permit#
+    </div>
+    <div style="position: absolute; left: 616px; top: 28px;">
+        <form>
+            <div style="position: relative; width: 308px; height: 37px; background-color: #D89F9F; border-radius: 0 100px 100px 0;">
+                <input type="text" placeholder="Search" style="position: absolute; left: 10px; top: 10px; width: 250px; height: 17px; border: none; background: none; font-size: 16px;">
+                <button type="submit" style="position: absolute; right: 10px; top: 8px; background: none; border: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            </div>
+        </form>
+    </div>
+    <div class='aa'>
+        <h2>Parking List</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Parking ID</th>
+                    <th>Name</th>
+                    <th>Time Left</th>
+                    <th>Vehicle Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="parking-list">
+                <!-- Parking list entries will be added dynamically here -->
+            </tbody>
+        </table>
+    </div>
+    <div id="parking-details"></div>
+    <script>
+        // Define parking list data
+        const parkingList = [{
+            id: 1,
+            name: 'Dhruv',
+            timeLeft: 60,
+            vehicleNumber: 'ABC123',
+            type: 'Student'
+        }, {
+            id: 2,
+            name: 'Rishi',
+            timeLeft: 30,
+            vehicleNumber: 'XYZ456',
+            type: 'Faculty'
+        }, {
+            id: 3,
+            name: 'Hardhik',
+            timeLeft: 120,
+            vehicleNumber: 'DEF789',
+            type: 'Guest'
+        }];
+
+        // Function to generate HTML for a single parking list entry
+        function generateParkingEntryHtml(entry) {
+            return `
+          <tr>
+            <td>${entry.id}</td>
+            <td>${entry.name}</td>
+            <td>${entry.timeLeft} minutes</td>
+            <td>${entry.vehicleNumber}</td>
+            <td>
+              <button class = "aaa" onclick="removeParkingEntry(${entry.id})">Remove</button>
+            </td>
+          </tr>
+        `;
+        }
+
+        // Function to generate HTML for parking details
+        function generateParkingDetailsHtml(entry) {
+            return `
+          <p>${entry.id} belongs to ${entry.name} ${entry.timeLeft} minutes for parking with ${entry.vehicleNumber}</p>
+        `;
+        }
+
+        // Function to add parking list entries to the HTML table
+        function populateParkingList() {
+            const parkingListHtml = parkingList.map(entry => generateParkingEntryHtml(entry)).join('');
+            document.getElementById('parking-list').innerHTML = parkingListHtml;
+        }
+
+        // Function to show parking details in the details div
+        function showParkingDetails(id) {
+            const entry = parkingList.find(e => e.id === id);
+            if (entry) {
+                const detailsHtml = generateParkingDetailsHtml(entry);
+                document.getElementById('parking-details').innerHTML = detailsHtml;
+            }
+        }
+
+        // Function to remove a parking entry from the list
+        function removeParkingEntry(id) {
+            const index = parkingList.findIndex(e => e.id === id);
+            if (index !== -1) {
+                parkingList.splice(index, 1);
+                populateParkingList();
+                alert(`Parking entry ${id} removed.`);
+                // TODO: Update database with the new parking list data
+            }
+        }
+
+        // Populate the parking list on page load
+        populateParkingList();
+    </script>
+
+    <div class="rectangle"></div>
+    <div class="red-rectangle manage">Manage</div>
+    <div class="red-rectangle expired">Expired</div>
+    <div class="red-rectangle surveillance">Surveillance</div>
+    <div class="text new-permit">New Permit</div>
+    <div class="text temporary-permit">Temporary Permit</div>
+    <div class="text special-permit">Special Permit</div>
+    <div class="text download-statistics">Download Statistics</div>
+    <div class="text fine-users">Fine Users</div>
+    <div class="text camera-remote">Camera Remote</div>
+    <div class="text camera">Camera</div>
+    <div class="text remote-control">Remote Control</div>
+    <div class="box">
+        <h1>Updates</h1>
+    </div>
+</body>
+
+</html>
